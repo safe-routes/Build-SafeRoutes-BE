@@ -1,10 +1,10 @@
 const router = require('express').Router();
 const users = require('../../users/users-model.js');
 
-router.get('/:id', async (req, res) => {
+router.get('/', async (req, res) => {
   try {
-    const user = await users.getUserById(req.params.id);
-    res.status(200).json(user);
+    const usersAll = await users.getAll();
+    res.status(200).json(usersAll);
   } catch (error) {
     console.error(error);
   }
