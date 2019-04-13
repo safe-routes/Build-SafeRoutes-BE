@@ -2,7 +2,7 @@ const router = require('express').Router();
 const Users = require('../../../users/users-model.js');
 
 router.post('/', async (req, res) => {
-  const user = req.body;
+  let user = req.body;
   const { email, name, username, password } = user;
 
   if (email && name && username && password) {

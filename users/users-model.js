@@ -6,20 +6,16 @@ module.exports = {
   getAll
 };
 
-function getUserById(id) {
-  return db('users')
-    .where({ id })
-    .first();
+async function addUser(user) {
+  const [id] = await db('users').insert(user);
+  return getUserById(id);
 }
 
-async function addUser(user) {
-  const id = await db('users').insert(user);
-  const firstId = id[0];
-  const addedUser = await db('users')
-    .where({ id: firstId })
+function getUserById(id) {
+  return db('users')
+    .select('id', 'username')
+    .where({ id })
     .first();
-  console.log(addedUser);
-  return addedUser;
 }
 
 function getAll() {
