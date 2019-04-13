@@ -13,10 +13,10 @@ function getUserById(id) {
 }
 
 async function addUser(user) {
-  const [id] = await db('users').insert(user);
-  console.log(id);
+  const id = await db('users').insert(user);
+  const firstId = id[0];
   return db('users')
-    .where({ id })
+    .where({ id: firstId })
     .first();
 }
 
