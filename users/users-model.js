@@ -1,7 +1,8 @@
 const db = require('../data/dbConfig.js');
 
 module.exports = {
-  addUser
+  addUser,
+  getUserById
 };
 
 function getUserById(id) {
