@@ -13,7 +13,8 @@ function getUserById(id) {
 }
 
 async function addUser(user) {
-  const [id] = await db('users').insert(user);
+  const id = await db('users').insert(user);
+  console.log(id[0]);
   return getUserById(id);
 }
 
