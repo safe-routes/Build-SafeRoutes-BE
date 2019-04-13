@@ -1,0 +1,43 @@
+{
+  "name": "Build-SafeRoutes-BE",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "server": "nodemon index.js",
+    "test": "cross-env DB_ENV=testing jest --watch",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/safe-routes/Build-SafeRoutes-BE.git"
+  },
+  "keywords": [],
+  "author": "Brian Illes",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/safe-routes/Build-SafeRoutes-BE/issues"
+  },
+  "homepage": "https://github.com/safe-routes/Build-SafeRoutes-BE#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "cross-env": "^5.2.0",
+    "dotenv": "^7.0.0",
+    "express": "^4.16.4",
+    "helmet": "^3.16.0",
+    "jsonwebtoken": "^8.5.1",
+    "knex": "^0.16.5",
+    "pg": "^7.9.0",
+    "sqlite3": "^4.0.6"
+  },
+  "devDependencies": {
+    "jest": "^24.7.1",
+    "knex-cleaner": "^1.1.4",
+    "nodemon": "^1.18.11",
+    "supertest": "^4.0.2"
+  },
+  "jest": {
+    "testEnvironment": "node"
+  }
+}
