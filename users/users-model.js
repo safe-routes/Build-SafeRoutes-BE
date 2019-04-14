@@ -8,20 +8,19 @@ module.exports = {
 };
 
 function getUserById(id) {
-  console.log(id);
   return db('users')
     .select()
     .where('id', id)
     .first();
 }
 
+// NOTE: this fuction is written in this convoluted manner because of an error that was occuring in the deploy enviroment.
 function addUser(user) {
-  console.log('USER BEFORE INSERT:', user);
   db('users')
     .insert(user)
     .then(ids => {
       const firstId = ids[0];
-      console.log('USER ID AFTER INSERT:', firstId);
+
       db('users')
         .select()
         .where('id', firstId)
