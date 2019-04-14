@@ -7,7 +7,11 @@ router.post('/register', async (req, res) => {
   let user = req.body;
   const { email, name, username, password } = user;
 
-  if (email && name && username && password) {
+  if (!email || !name || !username || !password) {
+    res.status(422).json({
+      message: 'Must provide email, name, username, and password'
+    });
+  } else {
     const usernameAlreadyTaken = await Users.getUserByUsername(username);
     const emailAlreadyTaken = await Users.getUserByEmail(email);
 
@@ -29,14 +33,9 @@ router.post('/register', async (req, res) => {
         res.status(201).json(addedUser);
       } catch (error) {
         console.error(error);
-
         res.status(500).json({ message: 'User could not be added.' });
       }
     }
-  } else {
-    res
-      .status(422)
-      .json({ message: 'Must provide email, name, username, and password' });
   }
 });
 
