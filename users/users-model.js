@@ -10,14 +10,15 @@ module.exports = {
 function getUserById(id) {
   return db('users')
     .select('id', 'email', 'name', 'username', 'created_at')
-    .where('id', id)
+    .where({ id })
     .first();
 }
 
 async function addUser(user) {
-  const [id] = await db('users').insert(user);
-
-  return getUserById(id);
+  const id = await db('users').insert(user);
+  const firstId = id[0];
+  console.log(firstId);
+  return getUserById(firstId);
 }
 
 function getUserByUsername(username) {
