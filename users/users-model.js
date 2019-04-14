@@ -8,9 +8,10 @@ module.exports = {
 };
 
 function getUserById(id) {
+  console.log(id);
   return db('users')
     .select()
-    .where({ id: id })
+    .where('id', id)
     .first();
 }
 
