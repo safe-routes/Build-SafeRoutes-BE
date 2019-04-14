@@ -49,7 +49,7 @@ describe('users-model.js', () => {
   });
 
   describe('getUserByUsername()', () => {
-    it('should return the user by email', async () => {
+    it('should return the user by username', async () => {
       const testUser1 = {
         email: 'test@gmail.com',
         name: 'Test One',

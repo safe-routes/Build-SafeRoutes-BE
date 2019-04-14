@@ -1,8 +1,8 @@
 const request = require('supertest');
-const db = require('../data/dbConfig.js');
-const server = require('../api/server.js');
+const db = require('../../data/dbConfig.js');
+const server = require('../../api/server.js');
 
-describe('auth-router.js', () => {
+describe('register-router.js', () => {
   beforeEach(async () => {
     await db('users').truncate();
   });
@@ -10,9 +10,9 @@ describe('auth-router.js', () => {
   describe('POST /api/auth/register', () => {
     it('should respond with 201 Created', async () => {
       const testUser1 = {
-        email: 'test@gmail.com',
-        name: 'Test One',
-        username: 'testOne',
+        email: 'testA@gmail.com',
+        name: 'Test A',
+        username: 'testA',
         password: '1KDIjdf!asadfD594@@@%'
       };
       const res = await request(server)
@@ -127,6 +127,4 @@ describe('auth-router.js', () => {
       expect(res1.body.username).toEqual('testTwo');
     });
   });
-
-  // describe('POST /api/auth/login', () => {});
 });

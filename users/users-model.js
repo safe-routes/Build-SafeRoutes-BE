@@ -21,7 +21,7 @@ function getUserById(id) {
 
 function getUserByUsername(username) {
   return db('users')
-    .select('id', 'email', 'name', 'username', 'created_at')
+    .select('id', 'email', 'name', 'username', 'password', 'created_at')
     .where({ username })
     .first();
 }

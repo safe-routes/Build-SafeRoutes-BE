@@ -1,15 +1,15 @@
 const router = require('express').Router();
 const bcrypt = require('bcryptjs');
 
-const Users = require('../users/users-model.js');
+const Users = require('../../users/users-model.js');
 
-router.post('/register', async (req, res) => {
+router.post('/', async (req, res) => {
   let user = req.body;
   const { email, name, username, password } = user;
 
   if (!email || !name || !username || !password) {
     res.status(422).json({
-      message: 'Must provide email, name, username, and password'
+      message: 'Must provide email, name, username, and password.'
     });
   } else {
     const usernameAlreadyTaken = await Users.getUserByUsername(username);
