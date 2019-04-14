@@ -7,16 +7,30 @@ module.exports = {
   getUserByEmail
 };
 
-async function addUser(user) {
-  const [id] = await db('users').insert(user);
-  return getUserById(id);
-}
-
 function getUserById(id) {
   return db('users')
-    .select('id', 'email', 'name', 'username', 'created_at')
-    .where({ id })
+    .select()
+    .where('id', id)
     .first();
+}
+
+// NOTE: this fuction is written in this convoluted manner because of an error that was occuring in the deploy enviroment.
+function addUser(user) {
+  db('users')
+    .insert(user)
+    .then(ids => {
+      const firstId = ids[0];
+
+      db('users')
+        .select()
+        .where('id', firstId)
+        .first()
+        .then(user => {
+          return user;
+        });
+      return user;
+    });
+  return user;
 }
 
 function getUserByUsername(username) {
