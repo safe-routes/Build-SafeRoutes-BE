@@ -55,6 +55,32 @@ describe('login-router.js', () => {
       expect(res.body.message).toEqual('Welcome, testToken');
       // expect(Object.keys(res).sort()).toEqual(['message', 'token'].sort());
     });
+
+    it('should return a token', async () => {
+      const testUserRegister = {
+        email: 'test@gmail.com',
+        name: 'Test One',
+        username: 'testOne',
+        password: '1KDIjdf!asadfD594@@@%'
+      };
+
+      await request(server)
+        .post('/api/auth/register')
+        .send(testUserRegister);
+
+      const testUserLogin1 = {
+        username: 'testOne',
+        password: '1KDIjdf!asadfD594@@@%'
+      };
+
+      const res = await request(server)
+        .post('/api/auth/login')
+        .send(testUserLogin1);
+
+      expect(res.body.token).not.toBeNull();
+    });
+
+    // could add more tests here: field validation...
   });
 });
 

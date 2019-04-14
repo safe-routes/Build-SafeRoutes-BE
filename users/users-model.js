@@ -14,7 +14,7 @@ function getUserById(id) {
     .first();
 }
 
-// NOTE: this function is written in this convoluted manner because of an error that was occuring in the deploy enviroment.
+// NOTE: this function is written in this manner because of an error that was occuring in the deploy enviroment.
 function addUser(user) {
   db('users')
     .insert(user)
