@@ -3,7 +3,8 @@ const db = require('../data/dbConfig.js');
 module.exports = {
   addUser,
   getUserById,
-  getAll
+  getUserByUsername,
+  getUserByEmail
 };
 
 async function addUser(user) {
@@ -13,12 +14,21 @@ async function addUser(user) {
 
 function getUserById(id) {
   return db('users')
-    .select('id', 'username')
+    .select('id', 'email', 'name', 'username', 'created_at')
     .where({ id })
     .first();
 }
 
-function getAll() {
-  //for testing production only
-  return db('users');
+function getUserByUsername(username) {
+  return db('users')
+    .select('id', 'email', 'name', 'username', 'created_at')
+    .where({ username })
+    .first();
+}
+
+function getUserByEmail(email) {
+  return db('users')
+    .select('id', 'email', 'name', 'username', 'created_at')
+    .where({ email })
+    .first();
 }
