@@ -16,10 +16,13 @@ function getUserById(id) {
 }
 
 async function addUser(user) {
+  console.log('USER BEFORE INSERT:', user);
   const id = await db('users').insert(user);
   const firstId = id[0];
-  console.log(firstId);
-  return getUserById(firstId);
+  console.log('USER ID AFTER INSERT:', firstId);
+  const addedUser = getUserById(firstId);
+  console.log('ADDED USER:', addedUser);
+  return addedUser;
 }
 
 function getUserByUsername(username) {
