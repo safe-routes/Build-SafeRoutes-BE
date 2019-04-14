@@ -7,16 +7,17 @@ module.exports = {
   getUserByEmail
 };
 
-async function addUser(user) {
-  const [id] = await db('users').insert(user);
-  return getUserById(id);
-}
-
 function getUserById(id) {
   return db('users')
     .select('id', 'email', 'name', 'username', 'created_at')
-    .where({ id })
+    .where('id', id)
     .first();
+}
+
+async function addUser(user) {
+  const [id] = await db('users').insert(user);
+
+  return getUserById(id);
 }
 
 function getUserByUsername(username) {
