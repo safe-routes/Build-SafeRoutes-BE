@@ -9,20 +9,19 @@ module.exports = {
 
 function getUserById(id) {
   return db('users')
-    .select()
-    .where('id', id)
+    .select('id', 'email', 'name', 'username', 'created_at')
+    .where({ id })
     .first();
 }
 
-// NOTE: this fuction is written in this convoluted manner because of an error that was occuring in the deploy enviroment.
+// NOTE: this function is written in this convoluted manner because of an error that was occuring in the deploy enviroment.
 function addUser(user) {
   db('users')
     .insert(user)
     .then(ids => {
       const firstId = ids[0];
-
       db('users')
-        .select()
+        .select('id', 'email', 'name', 'username', 'created_at')
         .where('id', firstId)
         .first()
         .then(user => {
