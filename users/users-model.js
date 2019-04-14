@@ -15,14 +15,23 @@ function getUserById(id) {
     .first();
 }
 
-async function addUser(user) {
+function addUser(user) {
   console.log('USER BEFORE INSERT:', user);
-  const id = await db('users').insert(user);
-  const firstId = id[0];
-  console.log('USER ID AFTER INSERT:', firstId);
-  const addedUser = getUserById(firstId);
-  console.log('ADDED USER:', addedUser);
-  return addedUser;
+  db('users')
+    .insert(user)
+    .then(ids => {
+      const firstId = ids[0];
+      console.log('USER ID AFTER INSERT:', firstId);
+      db('users')
+        .select()
+        .where('id', firstId)
+        .first()
+        .then(user => {
+          return user;
+        });
+      return user;
+    });
+  return user;
 }
 
 function getUserByUsername(username) {
