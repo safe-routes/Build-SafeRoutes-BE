@@ -41,10 +41,3 @@ router.post('/register', async (req, res) => {
 });
 
 module.exports = router;
-
-// if (error.errno === 19) {
-//   res.status(405).json({
-//     // can improve this later with more info (ie if its the username or email that is causing the error)
-//     message: 'Someone already has an account with that username or email.'
-//   });
-// } else {
