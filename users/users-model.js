@@ -9,8 +9,8 @@ module.exports = {
 
 function getUserById(id) {
   return db('users')
-    .select('id', 'email', 'name', 'username', 'created_at')
-    .where({ id })
+    .select()
+    .where({ id: id })
     .first();
 }
 
