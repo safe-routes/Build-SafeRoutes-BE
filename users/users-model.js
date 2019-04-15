@@ -29,7 +29,12 @@ function addUser(user) {
         });
       return user;
     });
-  return { email: user.email, name: user.name, username: user.username };
+  return {
+    id: user.id,
+    email: user.email,
+    name: user.name,
+    username: user.username
+  };
 }
 
 function getUserByUsername(username) {
