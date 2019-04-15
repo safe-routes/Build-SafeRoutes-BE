@@ -18,7 +18,10 @@ function getUserById(id) {
 async function addUser(user) {
   const [id] = await db('users').insert(user);
   // { email: user.email, name: user.name, username: user.username };
-  return getUserById(id);
+  return db('users')
+    .select('id', 'email', 'name', 'username', 'created_at')
+    .where({ id })
+    .first();
 }
 
 function getUserByUsername(username) {
