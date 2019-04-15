@@ -8,10 +8,7 @@ exports.up = function(knex) {
       .references('users.id')
       .onDelete('CASCADE')
       .onUpdate('CASCADE');
-    addresses
-      .string('address', 256)
-      .notNullable()
-      .unique();
+    addresses.string('address', 256).notNullable();
     addresses.timestamp('created_at').defaultTo(knex.fn.now());
   });
 };

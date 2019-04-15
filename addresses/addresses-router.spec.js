@@ -6,7 +6,8 @@ describe('authenticate-middleware.js', () => {
   beforeEach(async () => {
     await db('users').truncate();
   });
-  it('should verify the token if it is valid (i.e. it has not expired or is incorrect and return success.', async () => {
+
+  it('should validate the token (i.e. it has not expired or is incorrect and return success.', async () => {
     const testUserRegister = {
       email: 'testAddresses@gmail.com',
       name: 'Test One',

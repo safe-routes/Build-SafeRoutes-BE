@@ -83,5 +83,3 @@ describe('login-router.js', () => {
     // could add more tests here: field validation...
   });
 });
-
-//cross-env DB_ENV=testing add to pkg .json
