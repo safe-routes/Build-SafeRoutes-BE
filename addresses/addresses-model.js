@@ -1,22 +1,20 @@
 const db = require('../data/dbConfig.js');
 
 module.exports = {
-  addAddressByUserId
+  addAddressByUserId,
+  findAddressById
 };
 
-async function findAddressById(user_id) {
-  const address = db('addresses')
-    .select('address', 'user_id')
-    .where({ id: user_id })
+async function findAddressById(id) {
+  const addedAddress = await db('addresses')
+    .select('id', 'user_id', 'address', 'created_at')
+    .where({ id })
     .first();
-  console.log(address);
-  return address;
+
+  return addedAddress;
 }
 
 async function addAddressByUserId(user_id, address) {
-  console.log(user_id, address);
   const [address_id] = await db('addresses').insert({ user_id, address });
-
-  console.log(address_id);
   return findAddressById(address_id);
 }
