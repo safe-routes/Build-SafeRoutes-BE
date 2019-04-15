@@ -16,7 +16,7 @@
 
 - requires shape: `{ "username": "johndoe007", "password": "&&jfjRREv@vA553@##" }`
 
-- returns `{ "message": "Welcome, johndoe007", "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWJqZWN0IjozLCJ1c2VyIjoiam9obmRvZTAwNyIsImlhdCI6MTU1NTI2MTA3NiwiZXhwIjoxNTU1MzQ3NDc2fQ.TTFRQopW7fQKZmeRE5vmgW4TPwFj7kOJ9xi6A8NWFXs" }`
+- returns `{ "message": "Welcome, johndoe007", "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWJqZWN0IjozLCJ1c2VyIjoiam9obmRvZTAwNyIsImlhdCI6MTU1NTI2MTA3NiwiZXhwIjoxNTU1MzQ3NDc2fQ.TTFRQopW7fQKZmeRE5vmgW4TPwFj7kOJ9xi6A8NWFXs", "id": 4 }`
 
 ## Addresses / Intersections
 
