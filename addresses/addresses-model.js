@@ -4,17 +4,17 @@ module.exports = {
   addAddressByUserId,
   findAddressById,
   getAddressesByUserId,
-  deleteAddressById,
-  getAddressByEmail
+  deleteAddressById
 };
 
-function getAddressByEmail(email) {
-  return db('addresses')
-    .join('')
-    .select('id', 'email', 'name', 'created_at')
-    .where({ email })
-    .first();
-}
+// async function findAddressById(id) {
+//   const addedAddress = await db('addresses')
+//     .select('user_id', 'id', 'address', 'created_at')
+//     .where({ id })
+//     .first();
+
+//   return addedAddress;
+// }
 
 function findAddressById(id) {
   return db('addresses')
@@ -23,9 +23,13 @@ function findAddressById(id) {
     .first();
 }
 
-async function addAddressByUserId(user_id, address) {
-  const { rowCount } = await db('addresses').insert({ user_id, address });
-  return rowCount;
+// async function addAddressByUserId(user_id, address) {
+//   const [address_id] = await db('addresses').insert({ user_id, address });
+//   return findAddressById(address_id);
+// }
+
+function addAddressByUserId(user_id, address) {
+  return db('addresses').insert({ user_id, address });
 }
 
 function getAddressesByUserId(user_id) {
