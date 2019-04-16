@@ -12,9 +12,8 @@ router.delete('/', async (req, res) => {
       message: 'Must provide username and password.'
     });
   } else {
-    const hashedPassword = bcrypt.hashSync(user.password, 10);
-    user.password = hashedPassword;
     try {
+      const user = await Users.getUserByUsername(username);
       if (user && bcrypt.compareSync(password, user.password)) {
         const deletedUserCount = await Users.removeUser(username);
         if (deletedUserCount) {
