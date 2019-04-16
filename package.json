@@ -41,8 +41,5 @@
   },
   "jest": {
     "testEnvironment": "node"
-  },
-  "presets": [
-    "@babel/preset-env"
-  ]
+  }
 }
