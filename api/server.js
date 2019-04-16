@@ -5,7 +5,6 @@ const cors = require('cors');
 const registerRouter = require('../auth/register/register-router.js');
 const loginRouter = require('../auth/login/login-router.js');
 const addressesRouter = require('../addresses/addresses-router.js');
-const pythonRouter = require('../DS-routes/test-route.js');
 const { authenticate } = require('../auth/authenticate-middleware.js');
 
 const server = express();
@@ -24,8 +23,5 @@ server.use('/api/auth/login', loginRouter);
 
 // RESTRICTED routes
 server.use('/api/addresses', authenticate, addressesRouter);
-
-// PYTHON TEST: NOT FOR DEPLOY
-server.use('/api/pytest', pythonRouter);
 
 module.exports = server;
