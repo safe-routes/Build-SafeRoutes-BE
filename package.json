@@ -2,10 +2,6 @@
   "name": "Build-SafeRoutes-BE",
   "version": "1.0.0",
   "description": "",
-  "engines": {
-    "node": "7.10.0",
-    "npm": "4.2.0"
-  },
   "main": "index.js",
   "scripts": {
     "server": "nodemon index.js",
@@ -35,6 +31,7 @@
     "sqlite3": "^4.0.6"
   },
   "devDependencies": {
+    "@babel/preset-env": "^7.4.3",
     "cross-env": "^5.2.0",
     "faker": "^4.1.0",
     "jest": "^24.7.1",
