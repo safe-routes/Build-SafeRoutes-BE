@@ -19,7 +19,7 @@ async function findAddressById(id) {
 async function addAddressByUserId(user_id, address) {
   const [address_id] = await db('addresses').insert({ user_id, address });
   return findAddressById(address_id);
-}
+};
 
 function getAddressesByUserId(user_id) {
   return db('addresses')
