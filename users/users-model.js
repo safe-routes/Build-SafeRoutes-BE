@@ -38,9 +38,8 @@ function getUserById(id) {
 // }
 
 async function addUser(user) {
-  const id = await db('users').insert(user);
-  console.log(id);
-  return row_count;
+  const { rowCount } = await db('users').insert(user);
+  return rowCount;
 }
 
 function getUserByUsername(username) {
