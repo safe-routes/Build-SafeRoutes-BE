@@ -77,11 +77,20 @@ Receive if successfull:
 
 ---
 
-#### DELETE `/api/user/:id`
+#### DELETE `/api/auth/unregister`
+
+Send token in Authorization header
+
+Send in body:
 
 ```json
-
+{
+  "username": "johndoe007",
+  "password": "&&jfjRREv@vA553@##"
+}
 ```
+
+Receive if successfull: Status: 204 No Content
 
 ---
 
