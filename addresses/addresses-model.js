@@ -7,13 +7,20 @@ module.exports = {
   deleteAddressById
 };
 
-async function findAddressById(id) {
-  const addedAddress = await db('addresses')
+// async function findAddressById(id) {
+//   const addedAddress = await db('addresses')
+//     .select('user_id', 'id', 'address', 'created_at')
+//     .where({ id })
+//     .first();
+
+//   return addedAddress;
+// }
+
+function findAddressById(id) {
+  return db('addresses')
     .select('user_id', 'id', 'address', 'created_at')
     .where({ id })
     .first();
-
-  return addedAddress;
 }
 
 // async function addAddressByUserId(user_id, address) {
