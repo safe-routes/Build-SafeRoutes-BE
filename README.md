@@ -71,8 +71,29 @@ Receive if successfull:
 
 #### PUT `/api/user/:id`
 
-```json
+id is the id that is sent back on successful login
 
+Send token in Authorization header
+
+Send in body:
+
+```json
+{
+  "username": "test0000000000007",
+  "password": "&&jfjRREv@vA553@##"
+}
+```
+
+Receive if successfull:
+
+```json
+{
+  "id": 18,
+  "email": "test@gmail.com",
+  "name": "Testf Testl",
+  "username": "test0000000000007",
+  "created_at": "2019-04-16T19:16:56.470Z"
+}
 ```
 
 ---

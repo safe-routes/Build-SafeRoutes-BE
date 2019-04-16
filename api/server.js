@@ -28,6 +28,6 @@ server.use('/api/auth/login', loginRouter);
 // RESTRICTED routes
 server.use('/api/addresses', authenticate, addressesRouter);
 server.use('/api/auth/unregister', authenticate, unregisterRouter);
-server.use('/api/auth/update-user', authenticate, updateUserRouter);
+server.use('/api/user', authenticate, updateUserRouter);
 
 module.exports = server;
