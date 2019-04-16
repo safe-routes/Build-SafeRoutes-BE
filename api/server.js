@@ -18,8 +18,6 @@ server.get('/', (req, res) => {
   res.status(200).json({ message: 'success' });
 });
 
-server.use('/python', express.static('../DS'));
-
 // OPEN routes
 server.use('/api/auth/register', registerRouter);
 server.use('/api/auth/login', loginRouter);
@@ -28,6 +26,6 @@ server.use('/api/auth/login', loginRouter);
 server.use('/api/addresses', authenticate, addressesRouter);
 
 // PYTHON TEST: NOT FOR DEPLOY
-// server.use('/api/pythontest', pythonRouter);
+server.use('/api/pytest', pythonRouter);
 
 module.exports = server;

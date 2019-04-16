@@ -15,26 +15,32 @@ function getUserById(id) {
 }
 
 // NOTE: this function is written in this manner because of an error that was occuring in the deploy enviroment.
-function addUser(user) {
-  db('users')
-    .insert(user)
-    .then(ids => {
-      const firstId = ids[0];
-      db('users')
-        .select('id', 'email', 'name', 'username', 'created_at')
-        .where('id', firstId)
-        .first()
-        .then(user => {
-          return user;
-        });
-      return user;
-    });
-  return {
-    id: user.id,
-    email: user.email,
-    name: user.name,
-    username: user.username
-  };
+// function addUser(user) {
+//   db('users')
+//     .insert(user)
+//     .then(ids => {
+//       const firstId = ids[0];
+//       db('users')
+//         .select('id', 'email', 'name', 'username', 'created_at')
+//         .where('id', firstId)
+//         .first()
+//         .then(user => {
+//           return user;
+//         });
+//       return user;
+//     });
+//   return {
+//     id: user.id,
+//     email: user.email,
+//     name: user.name,
+//     username: user.username
+//   };
+// }
+
+async function addUser(user) {
+  const id = await db('users').insert(user);
+  console.log('db return value from pg:', id)
+  return id;
 }
 
 function getUserByUsername(username) {
