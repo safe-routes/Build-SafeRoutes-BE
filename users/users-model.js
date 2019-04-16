@@ -39,7 +39,7 @@ function getUserById(id) {
 
 async function addUser(user) {
   const [row_count] = await db('users').insert(user);
-  return id;
+  return row_count;
 }
 
 function getUserByUsername(username) {
