@@ -5,7 +5,8 @@ module.exports = {
   getUserById,
   getUserByUsername,
   getUserByEmail,
-  removeUser
+  removeUser,
+  updateUser
 };
 
 function getUserById(id) {
@@ -38,4 +39,10 @@ function removeUser(username) {
   return db('users')
     .where({ username })
     .del();
+}
+
+function updateUser(username, newUsername) {
+  return db('users')
+    .where({ username })
+    .update({ username: newUsername });
 }

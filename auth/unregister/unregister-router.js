@@ -9,7 +9,7 @@ router.delete('/', async (req, res) => {
 
   if (!username || !password) {
     res.status(422).json({
-      message: 'Must provide email, name, username, and password.'
+      message: 'Must provide username and password.'
     });
   } else {
     const hashedPassword = bcrypt.hashSync(user.password, 10);
@@ -19,11 +19,11 @@ router.delete('/', async (req, res) => {
         const deletedUserCount = await Users.removeUser(username);
         if (deletedUserCount) {
           res.status(204).end();
-        } else res.status(200).json({ message: 'Error deleting user.' });
+        } else res.status(404).json({ message: 'User not found.' });
       }
     } catch (error) {
       console.error(error);
-      res.status(500).json({ message: 'User could not be added.' });
+      res.status(500).json({ message: 'User could not be unregistered' });
     }
   }
 });
