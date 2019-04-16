@@ -38,7 +38,7 @@ function getUserById(id) {
 // }
 
 async function addUser(user) {
-  const [id] = await db('users').insert(user);
+  const [row_count] = await db('users').insert(user);
   return id;
 }
 
