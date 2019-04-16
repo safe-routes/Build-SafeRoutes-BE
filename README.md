@@ -8,16 +8,15 @@
 
 #### POST `/api/auth/register`:
 
-Description: registers user
+description: registers user
 
-- requires:
-  `{ "email": "johndoe@gmail.com", "name": "John Doe", "username": "johndoe007", "password": "&&jfjRREv@vA553@##" }`
+- requires: `{ "email": "johndoe@gmail.com", "name": "John Doe", "username": "johndoe007", "password": "&&jfjRREv@vA553@##" }`
 
 - returns: `{ "email": "johndoe@gmail.com", "name": "John Doe", "username": "johndoe007"}`
 
 #### POST `/api/auth/login`:
 
-Description: logs in user for 24 hours
+description: logs in user for 24 hours
 
 - requires: `{ "username": "johndoe007", "password": "&&jfjRREv@vA553@##" }`
 
@@ -25,13 +24,13 @@ Description: logs in user for 24 hours
 
 #### PUT `/api/user/:id`:
 
-Description: updates username
+description: updates username
 
 - Todo
 
 #### DELETE `/api/user/:id`: (requires token in headers)
 
-Description: deletes user
+description: deletes user
 
 _warning: this will delete all user info_
 
@@ -41,38 +40,36 @@ _warning: this will delete all user info_
 
 #### POST `/api/addresses/:id`: (id is user id sent on login, would be 30 in this case)
 
-Description: saves a user's address/intersection/marker/longitude, latitude TBD! (string no matter the case)
+description: saves a user's address/intersection/marker/longitude, latitude TBD! (string no matter the case)
 
-- requires:
-  `{ "address": "Spacex, Rocket Rd, Hawthorne, CA 90250" }`
+- requires: `{ "address": "Spacex, Rocket Rd, Hawthorne, CA 90250" }`
 
-- Returns:
-  `{ "user_id": 30, "id": 44, "address": "Spacex, Rocket Rd, Hawthorne, CA 90250", "created_at": "2019-04-16 03:09:34" }`
+- returns: `{ "user_id": 30, "id": 44, "address": "Spacex, Rocket Rd, Hawthorne, CA 90250", "created_at": "2019-04-16 03:09:34" }`
 
 #### GET `/api/addresses/:id`: (id is user id sent on login)
 
-Description: gets all user's saved addresses
+description: gets all user's saved addresses
 
-- requires token
+- requires: no body
 
-- Returns: `[ { "id": 44, "address": "Spacex, Rocket Rd, Hawthorne, CA 90250" }, ... ]`
+- returns: `[ { "id": 44, "address": "Spacex, Rocket Rd, Hawthorne, CA 90250" }, ... ]`
 
 #### DELETE `/api/addresses/:id`: (id is user id sent on login)
 
-Description: deletes a user's address by address id
+description: deletes a user's address by address id
 
-- requires token, `{ "address_id": 44}`
+- requires: `{ "address_id": 44}`
 
 - returns: 204 No Content if the address was found and deleted, 404 Not found if it was not found
 
 ### Groups (all require token in headers)
 
-Description: end points for groups
+description: end points for groups
 
 - Todo
 
 ### Routes (all require token in headers)
 
-Description: endpoints for routes
+description: endpoints for routes
 
 - Todo
