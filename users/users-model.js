@@ -35,9 +35,9 @@ function getUserByEmail(email) {
     .first();
 }
 
-function removeUser(username) {
+function removeUser(id) {
   return db('users')
-    .where({ username })
+    .where({ id })
     .del();
 }
 
