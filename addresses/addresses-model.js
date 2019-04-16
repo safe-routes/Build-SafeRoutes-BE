@@ -23,14 +23,14 @@ function findAddressById(id) {
     .first();
 }
 
-// async function addAddressByUserId(user_id, address) {
-//   const [address_id] = await db('addresses').insert({ user_id, address });
-//   return findAddressById(address_id);
-// }
-
-function addAddressByUserId(user_id, address) {
-  return db('addresses').insert({ user_id, address });
+async function addAddressByUserId(user_id, address) {
+  const [rowCount] = await db('addresses').insert({ user_id, address });
+  return findAddressById(rowCount);
 }
+
+// function addAddressByUserId(user_id, address) {
+//   return db('addresses').insert({ user_id, address });
+// }
 
 function getAddressesByUserId(user_id) {
   return db('addresses')

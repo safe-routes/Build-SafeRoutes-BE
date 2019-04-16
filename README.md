@@ -31,7 +31,7 @@ Send in body:
 }
 ```
 
-Recieve if successfull:
+Receive if successfull:
 
 ```json
 {
@@ -56,7 +56,7 @@ Send in body:
 }
 ```
 
-Recieve if successfull:
+Receive if successfull:
 
 ```json
 {
@@ -87,7 +87,7 @@ Recieve if successfull:
 
 #### POST `/api/addresses/:id`
 
-id is the id that is send on successful login
+id is the id that is sent back on successful login
 
 Send token in Authorization header
 
@@ -99,7 +99,7 @@ Send in body:
 }
 ```
 
-Recieve if successfull: _THIS WILL CHANGE, WORKING ON IT_
+Receive if successfull: _THIS WILL CHANGE, WORKING ON IT_
 
 ```json
 {
@@ -118,13 +118,13 @@ Recieve if successfull: _THIS WILL CHANGE, WORKING ON IT_
 
 #### GET `/api/addresses/:id`
 
-id is the id that is send on successful login
+id is the id that is sent back on successful login
 
 Send token in Authorization header
 
 Nothing sent in body!
 
-Recieve if successfull:
+Receive if successfull:
 
 ```json
 [
@@ -139,7 +139,7 @@ Recieve if successfull:
 
 #### DELETE `/api/addresses/:id`
 
-id is the id that is send on successful login
+id is the id that is sent back on successful login
 
 Send token in Authorization header
 
@@ -151,6 +151,6 @@ Send in body:
 }
 ```
 
-Recieve if successfull: Status: 204 No Content
+Receive if successfull: Status: 204 No Content
 
 ---
