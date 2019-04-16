@@ -7,7 +7,11 @@ router.get('/:id', async (req, res) => {
 
   try {
     const userAddresses = await Addresses.getAddressesByUserId(user_id);
-    res.status(200).json(userAddresses);
+    if (!userAddresses[0]) {
+      res.status(404).json({ message: `User has no addresses saved.` });
+    } else {
+      res.status(200).json(userAddresses);
+    }
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: 'Addresses could not be retrieved.' });
