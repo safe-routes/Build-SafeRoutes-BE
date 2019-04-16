@@ -11,17 +11,21 @@ async function findAddressById(id) {
   const addedAddress = await db('addresses')
     .select('user_id', 'id', 'address', 'created_at')
     .where({ id })
-    .first()
-    .catch();
+    .first();
+  console.log(addedAddress);
 
   return addedAddress;
 }
 
-async function addAddressByUserId(user_id, address) {
-  const [address_id] = await db('addresses')
+function addAddressByUserId(user_id, address) {
+  return db('addresses')
     .insert({ user_id, address })
-    .catch();
-  return findAddressById(address_id);
+    .then(id =>
+      db('addresses')
+        .select('user_id', 'id', 'address', 'created_at')
+        .where({ id })
+        .first()
+    );
 }
 
 function getAddressesByUserId(user_id) {
