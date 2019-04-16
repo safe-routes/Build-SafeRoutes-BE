@@ -1,11 +1,16 @@
 {
   "name": "Build-SafeRoutes-BE",
   "version": "1.0.0",
+  "babel": {
+    "presets": [
+      "@babel/preset-env"
+    ]
+  },
   "description": "",
   "main": "index.js",
   "scripts": {
     "server": "nodemon index.js",
-    "test": "jest --watch --verbose",
+    "test": "cross-env DB_ENV=testing jest --watch",
     "start": "node index.js"
   },
   "repository": {
@@ -31,6 +36,7 @@
     "sqlite3": "^4.0.6"
   },
   "devDependencies": {
+    "@babel/preset-env": "^7.4.3",
     "cross-env": "^5.2.0",
     "faker": "^4.1.0",
     "jest": "^24.7.1",
