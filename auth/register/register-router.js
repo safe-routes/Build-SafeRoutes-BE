@@ -29,8 +29,11 @@ router.post('/', async (req, res) => {
       const hashedPassword = bcrypt.hashSync(user.password, 10);
       user.password = hashedPassword;
       try {
-        const addedUser = await Users.addUser(user);
-        res.status(201).json(addedUser);
+        const addedUserCount = await Users.addUser(user);
+        if (addedUserCount) {
+          const newUser = await Users.getUserByEmail(email);
+          res.status(201).json(newUser);
+        } else res.status(200).json({ message: 'Error adding user.' });
       } catch (error) {
         console.error(error);
         res.status(500).json({ message: 'User could not be added.' });

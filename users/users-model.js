@@ -38,8 +38,7 @@ function getUserById(id) {
 // }
 
 async function addUser(user) {
-  const id = await db('users').insert(user);
-  console.log('db return value from pg:', id)
+  const [id] = await db('users').insert(user);
   return id;
 }
 
