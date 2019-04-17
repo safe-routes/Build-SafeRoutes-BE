@@ -27,7 +27,7 @@ router.post('/:id', async (req, res) => {
     try {
       const count = await Addresses.addAddressByUserId(user_id, address);
       if (count) {
-        res.status(201).json({ message: `The address: ${address} was added.` });
+        res.status(201).json({ address });
       } else {
         res
           .status(404)
