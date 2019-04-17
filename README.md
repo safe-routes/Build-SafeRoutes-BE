@@ -17,12 +17,12 @@
 | GET `/api/addresses/:id`    | Gets User's addresses     |
 | DELETE `/api/addresses/:id` | Deletes User's address    |
 
-| Group Endpoints                   | Description                               |
-| --------------------------------- | ----------------------------------------- |
-| POST `/api/group`                 | Creates a group                           |
-| POST `/api/group/:id/addresses`   | Saves an address for a Group with user_id |
-| GET `/api/group/:id`              | Gets Group's Info                         |
-| DELETE `/api/group/:id/addresses` | Deletes Group's address                   |
+| Group Endpoints                   | Description                           |
+| --------------------------------- | ------------------------------------- |
+| POST `/api/group`                 | Creates a group with 1 user (creator) |
+| POST `/api/group/:id`             | Adds User to a preexisting group      |
+| GET `/api/group/:id`              | Gets Group's Info                     |
+| DELETE `/api/group/:id/addresses` | Deletes Group's address               |
 
 | Group Messaging Endpoints      | Description                              |
 | ------------------------------ | ---------------------------------------- |
@@ -189,6 +189,8 @@ Receive if successfull: Status: 204 No Content
 
 #### POST `/api/group`
 
+Send token in Authorization header
+
 Send in body:
 
 ```json
@@ -209,3 +211,35 @@ Receive if successfull: 201
   "user_id": 1
 }
 ```
+
+#### POST `/api/group/:groupname/:id`
+
+Send token in Authorization header
+
+groupname is the groupname (just copy/paste it for now)
+
+passphrase is the one entered for when the group was initialized (just copy/paste it for now)
+
+id is the id that is sent back on successful login
+
+Send in body:
+
+```json
+{
+  "group_id": 15,
+  "passphrase": "thecoolestpassphrasever"
+}
+```
+
+Receive if successfull: 201
+
+```json
+{
+  "group_id": 15,
+  "name": "Welcome to The Avengers, test123",
+  "created_at": "2019-04-17T19:54:40.410Z",
+  "user_id": 18
+}
+```
+
+### GET `/api/group/:groupname`

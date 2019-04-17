@@ -3,7 +3,8 @@ const db = require('../data/dbConfig.js');
 module.exports = {
   addGroup,
   getGroupByName,
-  addUserToGroup
+  addUserToGroup,
+  allUsersInGroup
 };
 
 async function addGroup(group) {
@@ -18,12 +19,17 @@ function getGroupByName(name) {
     .where({ name })
     .first();
 }
-
+//user_id, group_id
 async function addUserToGroup(user_id, group_id) {
   const response = await db('users_groups').insert(user_id, group_id);
-  // const [added] = await db('users_groups').insert(memberToAdd);
-  console.log('RES FROM ADDUSERTOGROUP:', response);
+  // const [added] = await db('users_groups').insert(user_id, group_id);
   return response;
 }
 
-function getUsersGroups() {}
+async function allUsersInGroup(group_id) {
+  const response = await db('users_groups')
+    .select('user_id')
+    .where({ group_id });
+  console.log('RESPONSE=======', response);
+  return response;
+}
