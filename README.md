@@ -119,17 +119,6 @@ id is the id that is sent back on successful login
 
 Send token in Authorization header
 
-Send in body:
-
-```json
-{
-  "data": {
-    "username": "test123",
-    "password": "asdAppiu#$#@zz&"
-  }
-}
-```
-
 Receive if successfull: Status: 204 No Content
 
 ---
