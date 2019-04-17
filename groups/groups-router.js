@@ -21,10 +21,11 @@ router.post('/', async (req, res) => {
       const newGroup = await Groups.getGroupByName(group.name);
       console.log('NEW GROUP:', newGroup);
       if (newGroup) {
-        const addedGroupMember = await Groups.addUserToGroup({
+        const memberToAdd = {
           user_id,
           group_id: newGroup.id
-        });
+        };
+        const addedGroupMember = await Groups.addUserToGroup(memberToAdd);
         console.log('addedGroupMember:', addedGroupMember);
         if (addedGroupMember) {
           res.status(201).json({ newGroup, user_id });
