@@ -27,8 +27,11 @@ function getGroupByName(name) {
 
 async function addUserToGroup(memberToAdd) {
   console.log(memberToAdd);
-  const res = await db('users_groups').insert(memberToAdd);
+  const response = await db('users_groups').insert(
+    memberToAdd.user_id,
+    memberToAdd.group_id
+  );
   // const [added] = await db('users_groups').insert(memberToAdd);
-  console.log('RES FROM ADDUSERTOGROUP:', res);
+  console.log('RES FROM ADDUSERTOGROUP:', response);
   return rowCount;
 }
