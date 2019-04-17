@@ -15,7 +15,7 @@ const Users = require('../../users/users-model.js');
 
 router.delete('/:id', async (req, res) => {
   const id = req.params.id;
-  const { username, password } = req.body;
+  const { username, password } = req.body.data;
 
   try {
     const user = await Users.getUserByUsername(username);

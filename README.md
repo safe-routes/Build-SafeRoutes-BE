@@ -4,15 +4,29 @@
 
 - Base URL: `https://saferoutes-4-12.herokuapp.com`
 
-| Endpoint                    | Description               |
+| User Endpoints            | Description      |
+| ------------------------- | ---------------- |
+| POST `/api/auth/register` | Registers User   |
+| POST `/api/auth/login`    | Logs in User     |
+| PUT `/api/user/:id`       | Updates Username |
+| DELETE `/api/user/:id`    | Deletes User     |
+
+| Address Endpoints           | Description               |
 | --------------------------- | ------------------------- |
-| POST `/api/auth/register`   | Registers User            |
-| POST `/api/auth/login`      | Logs in User              |
-| PUT `/api/user/:id`         | Updates Username          |
-| DELETE `/api/user/:id`      | Deletes User              |
 | POST `/api/addresses/:id`   | Saves an address for User |
 | GET `/api/addresses/:id`    | Gets User's addresses     |
 | DELETE `/api/addresses/:id` | Deletes User's address    |
+
+| Group Endpoints                   | Description                               |
+| --------------------------------- | ----------------------------------------- |
+| POST `/api/group/:id/addresses`   | Saves an address for a Group with user_id |
+| GET `/api/group/:id`              | Gets Group's Info                         |
+| DELETE `/api/group/:id/addresses` | Deletes Group's address                   |
+
+| Group Messaging Endpoints      | Description                              |
+| ------------------------------ | ---------------------------------------- |
+| POST `/api/group/:id/messages` | Saves a message for a Group with user_id |
+| GET `/api/group/:id/messages`  | Gets Group's Messages                    |
 
 All endpoints have descriptive error messages.
 
@@ -109,8 +123,10 @@ Send in body:
 
 ```json
 {
-  "username": "test123",
-  "password": "asdAppiu#$#@zz&"
+  "data": {
+    "username": "test123",
+    "password": "asdAppiu#$#@zz&"
+  }
 }
 ```
 
@@ -136,7 +152,7 @@ Receive if successfull: (201)
 
 ```json
 {
-  "message": "The address: test address was added."
+  "address": "test address"
 }
 ```
 
