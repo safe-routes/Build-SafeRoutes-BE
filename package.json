@@ -1,11 +1,6 @@
 {
   "name": "Build-SafeRoutes-BE",
   "version": "1.0.0",
-  "babel": {
-    "presets": [
-      "@babel/preset-env"
-    ]
-  },
   "description": "",
   "main": "index.js",
   "scripts": {

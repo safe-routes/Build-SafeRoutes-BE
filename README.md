@@ -4,72 +4,184 @@
 
 - Base URL: `https://saferoutes-4-12.herokuapp.com`
 
-### Sign up and Login and Delete Account
+| Endpoint                    | Description               |
+| --------------------------- | ------------------------- |
+| POST `/api/auth/register`   | Registers User            |
+| POST `/api/auth/login`      | Logs in User              |
+| PUT `/api/user/:id`         | Updates Username          |
+| DELETE `/api/user/:id`      | Deletes User              |
+| POST `/api/addresses/:id`   | Saves an address for User |
+| GET `/api/addresses/:id`    | Gets User's addresses     |
+| DELETE `/api/addresses/:id` | Deletes User's address    |
 
-#### POST `/api/auth/register`:
+All endpoints have descriptive error messages.
 
-description: registers user
+---
 
-- requires: `{ "email": "johndoe@gmail.com", "name": "John Doe", "username": "johndoe007", "password": "&&jfjRREv@vA553@##" }`
+#### POST `/api/auth/register`
 
-- returns: `{ "email": "johndoe@gmail.com", "name": "John Doe", "username": "johndoe007"}`
+Send in body:
 
-#### POST `/api/auth/login`:
+```json
+{
+  "email": "test@gmail.com",
+  "name": "Testf Testl",
+  "username": "test007",
+  "password": "asdAppiu#$#@zz&"
+}
+```
 
-description: logs in user for 24 hours
+Receive if successfull:
 
-- requires: `{ "username": "johndoe007", "password": "&&jfjRREv@vA553@##" }`
+```json
+{
+  "id": 18,
+  "email": "test@gmail.com",
+  "name": "Testf Testl",
+  "username": "test007",
+  "created_at": "2019-04-16T19:16:56.470Z"
+}
+```
 
-- returns: `{ "id": 30, "account_created_at": "2019-04-15 18:05:45", "message": "Welcome, johndoe007", "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWJqZWN0IjozLCJ1c2VyIjoiam9obmRvZTAwNyIsImlhdCI6MTU1NTI2MTA3NiwiZXhwIjoxNTU1MzQ3NDc2fQ.TTFRQopW7fQKZmeRE5vmgW4TPwFj7kOJ9xi6A8NWFXs" }`
+---
 
-#### PUT `/api/user/:id`:
+#### POST `/api/auth/login`
 
-description: updates username
+Send in body:
 
-- Todo
+```json
+{
+  "username": "test007",
+  "password": "asdAppiu#$#@zz&"
+}
+```
 
-#### DELETE `/api/user/:id`: (requires token in headers)
+Receive if successfull:
 
-description: deletes user
+```json
+{
+  "id": 18,
+  "account_created_at": "2019-04-16T19:16:56.470Z",
+  "message": "Welcome, test007",
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWJqZWN0IjoxOCwidXNlciI6InRlc3QwMDciLCJpYXQiOjE1NTU0NDI2OTcsImV4cCI6MTU1NTUyOTA5N30.2-1CNnh-FRZ8HzVGj1ji2iHAu3YESqxlwQZQNp_nZaQ"
+}
+```
 
-_warning: this will delete all user info_
+---
 
-- Todo
+#### PUT `/api/user/:id`
 
-### Addresses / Intersections (all require token in headers)
+id is the id that is sent back on successful login
 
-#### POST `/api/addresses/:id`: (id is user id sent on login, would be 30 in this case)
+Send token in Authorization header
 
-description: saves a user's address/intersection/marker/longitude, latitude TBD! (string no matter the case)
+Send in body:
 
-- requires: `{ "address": "Spacex, Rocket Rd, Hawthorne, CA 90250" }`
+```json
+{
+  "username": "test007",
+  "newUsername": "test0000000000007",
+  "password": "&&jfjRREv@vA553@##"
+}
+```
 
-- returns: `{ "user_id": 30, "id": 44, "address": "Spacex, Rocket Rd, Hawthorne, CA 90250", "created_at": "2019-04-16 03:09:34" }`
+Receive if successfull:
 
-#### GET `/api/addresses/:id`: (id is user id sent on login)
+```json
+{
+  "id": 18,
+  "email": "test@gmail.com",
+  "name": "Testf Testl",
+  "username": "test0000000000007",
+  "created_at": "2019-04-16T19:16:56.470Z"
+}
+```
 
-description: gets all user's saved addresses
+---
 
-- requires: no body
+#### DELETE `/api/auth/unregister`
 
-- returns: `[ { "id": 44, "address": "Spacex, Rocket Rd, Hawthorne, CA 90250" }, ... ]`
+Send token in Authorization header
 
-#### DELETE `/api/addresses/:id`: (id is user id sent on login)
+Send in body:
 
-description: deletes a user's address by address id
+```json
+{
+  "username": "johndoe007",
+  "password": "&&jfjRREv@vA553@##"
+}
+```
 
-- requires: `{ "address_id": 44}`
+Receive if successfull: Status: 204 No Content
 
-- returns: 204 No Content if the address was found and deleted, 404 Not found if it was not found
+---
 
-### Groups (all require token in headers)
+#### POST `/api/addresses/:id`
 
-description: end points for groups
+id is the id that is sent back on successful login
 
-- Todo
+Send token in Authorization header
 
-### Routes (all require token in headers)
+Send in body:
 
-description: endpoints for routes
+```json
+{
+  "address": "test address"
+}
+```
 
-- Todo
+Receive if successfull: _THIS WILL CHANGE, WORKING ON IT_
+
+```json
+{
+  "command": "INSERT",
+  "rowCount": 1,
+  "oid": 0,
+  "rows": [],
+  "fields": [],
+  "_parsers": [],
+  "RowCtor": null,
+  "rowAsArray": false
+}
+```
+
+---
+
+#### GET `/api/addresses/:id`
+
+id is the id that is sent back on successful login
+
+Send token in Authorization header
+
+Nothing sent in body!
+
+Receive if successfull:
+
+```json
+[
+  {
+    "id": 31,
+    "address": "test address"
+  }
+]
+```
+
+---
+
+#### DELETE `/api/addresses/:id`
+
+id is the id that is sent back on successful login
+
+Send token in Authorization header
+
+Send in body:
+
+```json
+{
+  "address_id": "31"
+}
+```
+
+Receive if successfull: Status: 204 No Content
+
+---

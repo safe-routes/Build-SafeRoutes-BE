@@ -4,7 +4,9 @@ module.exports = {
   addUser,
   getUserById,
   getUserByUsername,
-  getUserByEmail
+  getUserByEmail,
+  removeUser,
+  updateUser
 };
 
 function getUserById(id) {
@@ -14,27 +16,9 @@ function getUserById(id) {
     .first();
 }
 
-// NOTE: this function is written in this manner because of an error that was occuring in the deploy enviroment.
-function addUser(user) {
-  db('users')
-    .insert(user)
-    .then(ids => {
-      const firstId = ids[0];
-      db('users')
-        .select('id', 'email', 'name', 'username', 'created_at')
-        .where('id', firstId)
-        .first()
-        .then(user => {
-          return user;
-        });
-      return user;
-    });
-  return {
-    id: user.id,
-    email: user.email,
-    name: user.name,
-    username: user.username
-  };
+async function addUser(user) {
+  const { rowCount } = await db('users').insert(user);
+  return rowCount;
 }
 
 function getUserByUsername(username) {
@@ -49,4 +33,16 @@ function getUserByEmail(email) {
     .select('id', 'email', 'name', 'username', 'created_at')
     .where({ email })
     .first();
+}
+
+function removeUser(id) {
+  return db('users')
+    .where({ id })
+    .del();
+}
+
+function updateUser({ id, username, password }) {
+  return db('users')
+    .where({ id })
+    .update({ username, password });
 }
