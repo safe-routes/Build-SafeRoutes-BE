@@ -203,11 +203,9 @@ Receive if successfull: 201
 
 ```json
 {
-  "newGroup": {
-    "id": 14,
-    "name": "The Avengers",
-    "created_at": "2019-04-17T19:44:22.871Z"
-  },
+  "id": 15,
+  "name": "The Avengers",
+  "created_at": "2019-04-17T19:54:40.410Z",
   "user_id": 1
 }
 ```
