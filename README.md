@@ -132,18 +132,11 @@ Send in body:
 }
 ```
 
-Receive if successfull: _THIS WILL CHANGE, WORKING ON IT_
+Receive if successfull: (201)
 
 ```json
 {
-  "command": "INSERT",
-  "rowCount": 1,
-  "oid": 0,
-  "rows": [],
-  "fields": [],
-  "_parsers": [],
-  "RowCtor": null,
-  "rowAsArray": false
+  "message": "The address: test address was added."
 }
 ```
 
