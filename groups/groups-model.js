@@ -8,6 +8,7 @@ module.exports = {
 
 async function addGroup(group) {
   const { rowCount } = await db('groups').insert(group);
+  console.log(rowCount);
   // const [res] = await db('groups').insert(group);
   return rowCount;
 }
