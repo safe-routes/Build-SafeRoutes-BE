@@ -17,16 +17,13 @@ router.post('/', async (req, res) => {
 
   try {
     const alreadyExists = await Groups.getGroupByName(group.name);
-    console.log(alreadyExists);
 
     if (alreadyExists !== undefined) {
       res.status(405).json({ message: 'Group name already taken.' });
     } else {
       const addedGroupCount = await Groups.addGroup(group);
-      console.log(addedGroupCount);
       if (addedGroupCount) {
         const newGroup = await Groups.getGroupByName(group.name);
-        console.log('NEW GROUP:', newGroup);
         if (newGroup) {
           const memberToAdd = {
             user_id,
@@ -38,12 +35,10 @@ router.post('/', async (req, res) => {
             created_at: newGroup.created_at,
             user_id
           };
-          console.log(memberToAdd);
           const addedGroupMember = await Groups.addUserToGroup(
             memberToAdd.user_id,
             memberToAdd.group_id
           );
-          console.log('addedGroupMember:', addedGroupMember);
           if (addedGroupMember) {
             res.status(201).json(newGroupMinusPassphrase);
           }
