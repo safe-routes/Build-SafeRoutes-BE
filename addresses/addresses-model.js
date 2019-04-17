@@ -26,7 +26,7 @@ function findAddressById(id) {
 async function addAddressByUserId(user_id, address) {
   const rowCount = await db('addresses').insert({ user_id, address });
   console.log(rowCount);
-  return findAddressById(rowCount);
+  return rowCount;
 }
 
 // function addAddressByUserId(user_id, address) {
