@@ -79,7 +79,8 @@ Send in body:
 
 ```json
 {
-  "username": "test0000000000007",
+  "username": "test007",
+  "newUsername": "test0000000000007",
   "password": "&&jfjRREv@vA553@##"
 }
 ```
