@@ -7,10 +7,25 @@ module.exports = {
 };
 
 async function addGroup(group) {
-  const { rowCount } = await db('users').insert(user);
+  const { rowCount } = await db('groups').insert(group);
+  // const [res] = await db('groups').insert(group);
   return rowCount;
 }
 
-function getGroupByName() {}
+// async function addUser(user) {
+//   const { rowCount } = await db('users').insert(user);
+//   return rowCount;
+// }
 
-function addUserToGroup() {}
+function getGroupByName(name) {
+  return db('groups')
+    .select()
+    .where({ name })
+    .first();
+}
+
+async function addUserToGroup({ user_id, group_id }) {
+  const { rowCount } = await db('users_groups').insert({ user_id, group_id });
+  // const [added] = await db('users_groups').insert({ user_id, group_id });
+  return rowCount;
+}
