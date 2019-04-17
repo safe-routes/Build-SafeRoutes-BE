@@ -212,11 +212,11 @@ Receive if successfull: 201
 }
 ```
 
-#### POST `/api/group/:groupname/:id`
+---
+
+#### POST `/api/group/:id`
 
 Send token in Authorization header
-
-groupname is the groupname (just copy/paste it for now)
 
 passphrase is the one entered for when the group was initialized (just copy/paste it for now)
 
@@ -226,7 +226,7 @@ Send in body:
 
 ```json
 {
-  "group_id": 15,
+  "groupname": "Saferoutes.............",
   "passphrase": "thecoolestpassphrasever"
 }
 ```
@@ -235,11 +235,56 @@ Receive if successfull: 201
 
 ```json
 {
-  "group_id": 15,
-  "name": "Welcome to The Avengers, test123",
-  "created_at": "2019-04-17T19:54:40.410Z",
-  "user_id": 18
+  "allGroupInfo2": {
+    "id": 17,
+    "passphrase": "$2a$10$Rq0XwdcWrHlF0p.AdEFP9eT/D0CFCO7jXTYHn9ZEyVRf7netsAgnS",
+    "name": "Saferoutes.............",
+    "created_at": "2019-04-17T22:05:38.199Z"
+  },
+  "allUsers": [
+    {
+      "user_id": 14
+    },
+    {
+      "user_id": 15
+    }
+  ]
 }
 ```
 
-### GET `/api/group/:groupname`
+---
+
+### GET `/api/group/:id`
+
+id id group id
+
+Send token in Authorization header
+
+Send in body:
+
+```json
+{
+  "name": "Saferoutes............."
+}
+```
+
+Receive if successfull: 201
+
+```json
+{
+  "allGroupInfo2": {
+    "id": 17,
+    "passphrase": "$2a$10$Rq0XwdcWrHlF0p.AdEFP9eT/D0CFCO7jXTYHn9ZEyVRf7netsAgnS",
+    "name": "Saferoutes.............",
+    "created_at": "2019-04-17T22:05:38.199Z"
+  },
+  "allUsers": [
+    {
+      "user_id": 14
+    },
+    {
+      "user_id": 15
+    }
+  ]
+}
+```
