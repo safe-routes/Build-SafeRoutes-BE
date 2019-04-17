@@ -16,26 +16,33 @@ router.post('/', async (req, res) => {
   group.passphrase = hashedPassphrase;
 
   try {
-    const addedGroupCount = await Groups.addGroup(group);
-    if (addedGroupCount) {
-      const newGroup = await Groups.getGroupByName(group.name);
-      console.log('NEW GROUP:', newGroup);
-      if (newGroup) {
-        const memberToAdd = {
-          user_id,
-          group_id: newGroup.id
-        };
-        const addedGroupMember = await Groups.addUserToGroup(memberToAdd);
-        console.log('addedGroupMember:', addedGroupMember);
-        if (addedGroupMember) {
-          res.status(201).json({ newGroup, user_id });
+    const alreadyExists = await Groups.getGroupByName(group.name);
+    console.log(alreadyExists);
+
+    if (alreadyExists !== undefined) {
+      res.status(405).json({ message: 'Group name already taken.' });
+    } else {
+      const addedGroupCount = await Groups.addGroup(group);
+      console.log(addedGroupCount);
+      if (addedGroupCount) {
+        const newGroup = await Groups.getGroupByName(group.name);
+        console.log('NEW GROUP:', newGroup);
+        if (newGroup) {
+          const memberToAdd = {
+            user_id,
+            group_id: newGroup.id
+          };
+          console.log(memberToAdd);
+          const addedGroupMember = await Groups.addUserToGroup(memberToAdd);
+          console.log('addedGroupMember:', addedGroupMember);
+          if (addedGroupMember) {
+            res.status(201).json({ newGroup, user_id });
+          }
         }
       }
-    } else {
-      res.status(500).json({ message: 'Group could not be created.' });
     }
   } catch (error) {
-    res.status(405).json({ message: 'Group name already taken.' });
+    res.status(500).json({ message: 'Group could not be created.' });
   }
 });
 
