@@ -32,6 +32,12 @@ router.post('/', async (req, res) => {
             user_id,
             group_id: newGroup.id
           };
+          newGroupMinusPassphrase = {
+            id: newGroup.id,
+            name: newGroup.name,
+            created_at: newGroup.created_at,
+            user_id
+          };
           console.log(memberToAdd);
           const addedGroupMember = await Groups.addUserToGroup(
             memberToAdd.user_id,
@@ -39,7 +45,7 @@ router.post('/', async (req, res) => {
           );
           console.log('addedGroupMember:', addedGroupMember);
           if (addedGroupMember) {
-            res.status(201).json({ newGroup, user_id });
+            res.status(201).json(newGroupMinusPassphrase);
           }
         }
       }

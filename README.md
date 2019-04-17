@@ -19,6 +19,7 @@
 
 | Group Endpoints                   | Description                               |
 | --------------------------------- | ----------------------------------------- |
+| POST `/api/group`                 | Creates a group                           |
 | POST `/api/group/:id/addresses`   | Saves an address for a Group with user_id |
 | GET `/api/group/:id`              | Gets Group's Info                         |
 | DELETE `/api/group/:id/addresses` | Deletes Group's address                   |
@@ -185,3 +186,28 @@ Send in body:
 Receive if successfull: Status: 204 No Content
 
 ---
+
+#### POST `/api/group`
+
+Send in body:
+
+```json
+{
+  "name": "The Avengers",
+  "passphrase": "thecoolestpassphrasever",
+  "user_id": 1
+}
+```
+
+Receive if successfull: 201
+
+```json
+{
+  "newGroup": {
+    "id": 14,
+    "name": "The Avengers",
+    "created_at": "2019-04-17T19:44:22.871Z"
+  },
+  "user_id": 1
+}
+```
