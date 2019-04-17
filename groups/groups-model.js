@@ -25,13 +25,12 @@ function getGroupByName(name) {
     .first();
 }
 
-async function addUserToGroup(memberToAdd) {
-  console.log(memberToAdd);
-  const response = await db('users_groups').insert(
-    memberToAdd.user_id,
-    memberToAdd.group_id
-  );
+async function addUserToGroup(user_id, group_id) {
+  console.log(user_id, group_id);
+  const response = await db('users_groups').insert(user_id, group_id);
   // const [added] = await db('users_groups').insert(memberToAdd);
   console.log('RES FROM ADDUSERTOGROUP:', response);
   return rowCount;
 }
+
+function getUsersGroups() {}
