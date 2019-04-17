@@ -30,7 +30,7 @@ async function addUserToGroup(user_id, group_id) {
   const response = await db('users_groups').insert(user_id, group_id);
   // const [added] = await db('users_groups').insert(memberToAdd);
   console.log('RES FROM ADDUSERTOGROUP:', response);
-  return rowCount;
+  return response;
 }
 
 function getUsersGroups() {}
