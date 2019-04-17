@@ -26,6 +26,7 @@ function getGroupByName(name) {
 }
 
 async function addUserToGroup(memberToAdd) {
+  console.log(memberToAdd);
   const res = await db('users_groups').insert(memberToAdd);
   // const [added] = await db('users_groups').insert(memberToAdd);
   console.log('RES FROM ADDUSERTOGROUP:', res);
