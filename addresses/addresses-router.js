@@ -25,8 +25,8 @@ router.post('/:id', async (req, res) => {
     res.status(422).json({ message: 'Must provide address and user id.' });
   } else {
     try {
-      const count = await Addresses.addAddressByUserId(user_id, address);
-      res.status(201).json(count);
+      const addedAddress = await Addresses.addAddressByUserId(user_id, address);
+      res.status(201).json(addedAddress);
     } catch (error) {
       console.error(error);
       res.status(500).json({ message: 'Address could not be added.' });
