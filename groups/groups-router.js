@@ -2,11 +2,7 @@ const router = require('express').Router();
 const bcrypt = require('bcryptjs');
 
 const Groups = require('./groups-model.js');
-
-// router.get('/', async (req, res) => {
-//   const msg = await Groups.addGroup();
-//   res.send(msg);
-// });
+const Users = require('../users/users-model.js')
 
 router.post('/', async (req, res) => {
   const group = { passphrase: req.body.passphrase, name: req.body.name };
@@ -64,17 +60,16 @@ router.post('/:id', async (req, res) => {
           user_id: newMemberId,
           group_id: group.id
         };
-
         const addUserToGroup = await Groups.addUserToGroup(memberToAdd2);
         if (addUserToGroup) {
-          const allGroupInfo2 = await Groups.getGroupByName(
-            allGroupInfo.groupname
-          );
-
-          console.log(memberToAdd2.group_id);
+          const groupInfo = await Groups.getGroupByName(groupInfo.groupname);
+          const groupData = {
+            id: groupInfo.id,
+            name: groupInfo.name,
+            created_at: groupInfo.created_at
+          };
           const allUsers = await Groups.allUsersInGroup(memberToAdd2.group_id);
-
-          res.status(200).json({ allGroupInfo2, allUsers });
+          res.status(200).json({ groupData, members: allUsers });
         } else {
           res.status(500).json({ message: 'Could not be added to the group.' });
         }
@@ -95,8 +90,16 @@ router.get('/:id', async (req, res) => {
   try {
     const group = await Groups.getGroupByName(name);
     const members = await Groups.allUsersInGroup(group_id);
-
-    res.status(200).json({ group, members });
+    const groupData = {
+      id: group.id,
+      name: group.name,
+      created_at: group.created_at
+    };
+    const memberDetails = [];
+    members.map(member => {
+      memberDetails.push(await Users.getUserById(member.id));
+    })
+    res.status(200).json({ groupData, memberDetails });
   } catch (error) {
     console.error(error);
     res.status(500).json(error);

@@ -17,12 +17,11 @@
 | GET `/api/addresses/:id`    | Gets User's addresses     |
 | DELETE `/api/addresses/:id` | Deletes User's address    |
 
-| Group Endpoints                   | Description                           |
-| --------------------------------- | ------------------------------------- |
-| POST `/api/group`                 | Creates a group with 1 user (creator) |
-| POST `/api/group/:id`             | Adds User to a preexisting group      |
-| GET `/api/group/:id`              | Gets Group's Info                     |
-| DELETE `/api/group/:id/addresses` | Deletes Group's address               |
+| Group Endpoints       | Description                           |
+| --------------------- | ------------------------------------- |
+| POST `/api/group`     | Creates a group with 1 user (creator) |
+| POST `/api/group/:id` | Adds User to a preexisting group      |
+| GET `/api/group/:id`  | Gets Group's Info                     |
 
 | Group Messaging Endpoints      | Description                              |
 | ------------------------------ | ---------------------------------------- |
