@@ -1,8 +1,8 @@
 const router = require('express').Router();
 const db = require('../data/dbConfig.js');
 
-router.get('/', async (req, res) => {
-  const COUNTY = req.body.county;
+router.get('/:county', async (req, res) => {
+  const COUNTY = req.params.county;
 
   try {
     const accidents = await db('accidents')
