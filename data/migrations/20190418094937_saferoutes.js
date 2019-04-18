@@ -5,8 +5,8 @@ exports.up = function(knex) {
       accidents.string('TWAY_ID', 128);
       accidents.string('TWAY_ID2', 128);
       accidents.string('COUNTY', 128);
-      accidents.float('LATITUDE', 10, 7);
-      accidents.float('LONGITUD', 10, 7);
+      accidents.float('LATITUDE', 12, 12);
+      accidents.float('LONGITUD', 12, 12);
       accidents.integer('MONTH', 128);
       accidents.integer('DAY', 128);
       accidents.integer('YEAR', 128);
