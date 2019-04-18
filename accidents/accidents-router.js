@@ -15,4 +15,16 @@ router.get('/', async (req, res) => {
   }
 });
 
+router.post('/', async (req, res) => {
+  const accident = req.body;
+
+  try {
+    const { rowCount } = await db('accidents').insert(user);
+    res.status(201).json({ message: 'Accident added successfully' });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Error adding accidents.' });
+  }
+});
+
 module.exports = router;
