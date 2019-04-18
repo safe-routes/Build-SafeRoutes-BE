@@ -4,6 +4,10 @@
 
 - Base URL: `https://saferoutes-4-12.herokuapp.com`
 
+| Map Endpoint         | Description                      |
+| -------------------- | -------------------------------- |
+| GET `/api/accidents` | Gets all accident data by county |
+
 | User Endpoints            | Description      |
 | ------------------------- | ---------------- |
 | POST `/api/auth/register` | Registers User   |
@@ -22,11 +26,6 @@
 | POST `/api/group`     | Creates a group with 1 user (creator) |
 | POST `/api/group/:id` | Adds User to a preexisting group      |
 | GET `/api/group/:id`  | Gets Group's Info                     |
-
-| Group Messaging Endpoints      | Description                              |
-| ------------------------------ | ---------------------------------------- |
-| POST `/api/group/:id/messages` | Saves a message for a Group with user_id |
-| GET `/api/group/:id/messages`  | Gets Group's Messages                    |
 
 All endpoints have descriptive error messages.
 
@@ -225,7 +224,7 @@ Send in body:
 
 ```json
 {
-  "groupname": "Saferoutes.............",
+  "groupname": "Saferoutes",
   "passphrase": "thecoolestpassphrasever"
 }
 ```
@@ -236,7 +235,7 @@ Receive if successfull: 201
 {
   "groupData": {
     "id": 17,
-    "name": "Saferoutes.............",
+    "name": "Saferoutes",
     "created_at": "2019-04-17T22:05:38.199Z"
   },
   "members": [
@@ -262,7 +261,7 @@ Send in body:
 
 ```json
 {
-  "name": "Saferoutes............."
+  "name": "Saferoutes"
 }
 ```
 
@@ -272,7 +271,7 @@ Receive if successfull: 200
 {
   "groupData": {
     "id": 17,
-    "name": "Saferoutes.............",
+    "name": "Saferoutes",
     "created_at": "2019-04-17T22:05:38.199Z"
   },
   "members": [
