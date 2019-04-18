@@ -2,12 +2,12 @@ const router = require('express').Router();
 const db = require('../data/dbConfig.js');
 
 router.get('/', async (req, res) => {
-  const county = req.body.county;
+  const COUNTY = req.body.county;
 
   try {
     const accidents = await db('accidents')
       .select()
-      .where({ county });
+      .where({ COUNTY });
     res.status(200).json(accidents);
   } catch (error) {
     console.error(error);
