@@ -1,5 +1,4 @@
 const router = require('express').Router();
-
 const Addresses = require('./addresses-model.js');
 
 router.get('/:id', async (req, res) => {
@@ -27,7 +26,13 @@ router.post('/:id', async (req, res) => {
   } else {
     try {
       const count = await Addresses.addAddressByUserId(user_id, address);
-      res.status(201).json(count);
+      if (count) {
+        res.status(201).json({ address });
+      } else {
+        res
+          .status(404)
+          .json({ message: 'User not found, address could not be added.' });
+      }
     } catch (error) {
       console.error(error);
       res.status(500).json({ message: 'Address could not be added.' });
