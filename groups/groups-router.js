@@ -69,8 +69,13 @@ router.post('/:id', async (req, res) => {
           const allGroupInfo2 = await Groups.getGroupByName(
             allGroupInfo.groupname
           );
+          const groupData = {
+            id: allGroupInfo2.id,
+            name: allGroupInfo2.name,
+            created_at: allGroupInfo2.created_at
+          };
           const allUsers = await Groups.allUsersInGroup(memberToAdd2.group_id);
-          res.status(200).json({ allGroupInfo2, members: allUsers });
+          res.status(200).json({ groupData, members: allUsers });
         } else {
           res.status(500).json({ message: 'Could not be added to the group.' });
         }
