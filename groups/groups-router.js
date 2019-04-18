@@ -2,7 +2,6 @@ const router = require('express').Router();
 const bcrypt = require('bcryptjs');
 
 const Groups = require('./groups-model.js');
-const Users = require('../users/users-model.js')
 
 router.post('/', async (req, res) => {
   const group = { passphrase: req.body.passphrase, name: req.body.name };
@@ -95,11 +94,7 @@ router.get('/:id', async (req, res) => {
       name: group.name,
       created_at: group.created_at
     };
-    const memberDetails = [];
-    members.map(member => {
-      memberDetails.push(await Users.getUserById(member.id));
-    })
-    res.status(200).json({ groupData, memberDetails });
+    res.status(200).json({ groupData, members });
   } catch (error) {
     console.error(error);
     res.status(500).json(error);
