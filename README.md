@@ -4,9 +4,9 @@
 
 - Base URL: `https://saferoutes-4-12.herokuapp.com`
 
-| Map Endpoint         | Description                      |
-| -------------------- | -------------------------------- |
-| GET `/api/accidents` | Gets all accident data by county |
+| Map Endpoint                 | Description                      |
+| ---------------------------- | -------------------------------- |
+| GET `/api/accidents/:county` | Gets all accident data by county |
 
 | User Endpoints            | Description      |
 | ------------------------- | ---------------- |
@@ -31,6 +31,40 @@ All endpoints have descriptive error messages.
 
 ---
 
+#### GET `/api/accidents/:county`
+
+ex.
+if county is "SAN MATEO"
+
+Receive if successful:
+
+```json
+[
+    {
+        "id": 7,
+        "TWAY_ID": "SR-51",
+        "TWAY_ID2": "NO SECOND STREET",
+        "COUNTY": "SAN MATEO",
+        "LATITUDE": "32.61823889",
+        "LONGITUD": "-85.37138333",
+        "MONTH": 1,
+        "DAY": 13,
+        "YEAR": 2015,
+        "DAY_WEEK": "TUESDAY",
+        "LGT_COND": "NIGHT",
+        "WEATHER": "CLEAR",
+        "WRK_ZONE": 0,
+        "FATALS": 1,
+        "PEDS": 0,
+        "MAN_COLL": "ANGLED",
+        "FUNC_SYS": "ARTERY",
+        "TYP_INT": "NOT AN INTERSECTION"
+    },
+  ...
+]
+
+```
+
 #### POST `/api/auth/register`
 
 Send in body:
@@ -44,7 +78,7 @@ Send in body:
 }
 ```
 
-Receive if successfull:
+Receive if successful:
 
 ```json
 {
@@ -69,7 +103,7 @@ Send in body:
 }
 ```
 
-Receive if successfull:
+Receive if successful:
 
 ```json
 {
@@ -98,7 +132,7 @@ Send in body:
 }
 ```
 
-Receive if successfull:
+Receive if successful:
 
 ```json
 {
@@ -118,7 +152,7 @@ id is the id that is sent back on successful login
 
 Send token in Authorization header
 
-Receive if successfull: Status: 204 No Content
+Receive if successful: Status: 204 No Content
 
 ---
 
@@ -136,7 +170,7 @@ Send in body:
 }
 ```
 
-Receive if successfull: (201)
+Receive if successful: (201)
 
 ```json
 {
@@ -152,9 +186,7 @@ id is the id that is sent back on successful login
 
 Send token in Authorization header
 
-Nothing sent in body!
-
-Receive if successfull:
+Receive if successful:
 
 ```json
 [
@@ -181,7 +213,7 @@ Send in body:
 }
 ```
 
-Receive if successfull: Status: 204 No Content
+Receive if successful: Status: 204 No Content
 
 ---
 
@@ -199,7 +231,9 @@ Send in body:
 }
 ```
 
-Receive if successfull: 201
+Receive if successful: 201
+
+&
 
 ```json
 {
@@ -229,7 +263,7 @@ Send in body:
 }
 ```
 
-Receive if successfull: 201
+Receive if successful: 201
 
 ```json
 {
@@ -265,7 +299,7 @@ Send in body:
 }
 ```
 
-Receive if successfull: 200
+Receive if successful: 200
 
 ```json
 {
