@@ -19,7 +19,7 @@ router.post('/', async (req, res) => {
   const accident = req.body;
 
   try {
-    const [id] = await db('accidents').insert(accident);
+    const { rowCount } = await db('accidents').insert(accident);
     res.status(201).json({ message: 'Accident added successfully' });
   } catch (error) {
     console.error(error);
