@@ -234,13 +234,12 @@ Receive if successfull: 201
 
 ```json
 {
-  "allGroupInfo2": {
+  "groupData": {
     "id": 17,
-    "passphrase": "$2a$10$Rq0XwdcWrHlF0p.AdEFP9eT/D0CFCO7jXTYHn9ZEyVRf7netsAgnS",
     "name": "Saferoutes.............",
     "created_at": "2019-04-17T22:05:38.199Z"
   },
-  "allUsers": [
+  "members": [
     {
       "user_id": 14
     },
@@ -267,17 +266,16 @@ Send in body:
 }
 ```
 
-Receive if successfull: 201
+Receive if successfull: 200
 
 ```json
 {
-  "allGroupInfo2": {
+  "groupData": {
     "id": 17,
-    "passphrase": "$2a$10$Rq0XwdcWrHlF0p.AdEFP9eT/D0CFCO7jXTYHn9ZEyVRf7netsAgnS",
     "name": "Saferoutes.............",
     "created_at": "2019-04-17T22:05:38.199Z"
   },
-  "allUsers": [
+  "members": [
     {
       "user_id": 14
     },

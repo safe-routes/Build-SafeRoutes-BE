@@ -3,6 +3,11 @@ const bcrypt = require('bcryptjs');
 
 const Groups = require('./groups-model.js');
 
+// router.get('/', async (req, res) => {
+//   const msg = await Groups.addGroup();
+//   res.send(msg);
+// });
+
 router.post('/', async (req, res) => {
   const group = { passphrase: req.body.passphrase, name: req.body.name };
   const { user_id } = req.body;
@@ -61,14 +66,11 @@ router.post('/:id', async (req, res) => {
         };
         const addUserToGroup = await Groups.addUserToGroup(memberToAdd2);
         if (addUserToGroup) {
-          const groupInfo = await Groups.getGroupByName(groupInfo.groupname);
-          const groupData = {
-            id: groupInfo.id,
-            name: groupInfo.name,
-            created_at: groupInfo.created_at
-          };
+          const allGroupInfo2 = await Groups.getGroupByName(
+            allGroupInfo.groupname
+          );
           const allUsers = await Groups.allUsersInGroup(memberToAdd2.group_id);
-          res.status(200).json({ groupData, members: allUsers });
+          res.status(200).json({ allGroupInfo2, members: allUsers });
         } else {
           res.status(500).json({ message: 'Could not be added to the group.' });
         }
