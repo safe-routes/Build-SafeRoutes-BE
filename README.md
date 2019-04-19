@@ -4,6 +4,10 @@
 
 - Base URL: `https://saferoutes-4-12.herokuapp.com`
 
+| Map Endpoint                 | Description                      |
+| ---------------------------- | -------------------------------- |
+| GET `/api/accidents/:county` | Gets all accident data by county |
+
 | User Endpoints            | Description      |
 | ------------------------- | ---------------- |
 | POST `/api/auth/register` | Registers User   |
@@ -23,14 +27,43 @@
 | POST `/api/group/:id` | Adds User to a preexisting group      |
 | GET `/api/group/:id`  | Gets Group's Info                     |
 
-| Group Messaging Endpoints      | Description                              |
-| ------------------------------ | ---------------------------------------- |
-| POST `/api/group/:id/messages` | Saves a message for a Group with user_id |
-| GET `/api/group/:id/messages`  | Gets Group's Messages                    |
-
 All endpoints have descriptive error messages.
 
 ---
+
+#### GET `/api/accidents/:county`
+
+ex.
+if county is "SAN MATEO"
+
+Receive if successful:
+
+```json
+[
+    {
+        "id": 7,
+        "TWAY_ID": "SR-51",
+        "TWAY_ID2": "NO SECOND STREET",
+        "COUNTY": "SAN MATEO",
+        "LATITUDE": "32.61823889",
+        "LONGITUD": "-85.37138333",
+        "MONTH": 1,
+        "DAY": 13,
+        "YEAR": 2015,
+        "DAY_WEEK": "TUESDAY",
+        "LGT_COND": "NIGHT",
+        "WEATHER": "CLEAR",
+        "WRK_ZONE": 0,
+        "FATALS": 1,
+        "PEDS": 0,
+        "MAN_COLL": "ANGLED",
+        "FUNC_SYS": "ARTERY",
+        "TYP_INT": "NOT AN INTERSECTION"
+    },
+  ...
+]
+
+```
 
 #### POST `/api/auth/register`
 
@@ -45,7 +78,7 @@ Send in body:
 }
 ```
 
-Receive if successfull:
+Receive if successful:
 
 ```json
 {
@@ -70,7 +103,7 @@ Send in body:
 }
 ```
 
-Receive if successfull:
+Receive if successful:
 
 ```json
 {
@@ -99,7 +132,7 @@ Send in body:
 }
 ```
 
-Receive if successfull:
+Receive if successful:
 
 ```json
 {
@@ -119,7 +152,7 @@ id is the id that is sent back on successful login
 
 Send token in Authorization header
 
-Receive if successfull: Status: 204 No Content
+Receive if successful: Status: 204 No Content
 
 ---
 
@@ -137,7 +170,7 @@ Send in body:
 }
 ```
 
-Receive if successfull: (201)
+Receive if successful: (201)
 
 ```json
 {
@@ -153,9 +186,7 @@ id is the id that is sent back on successful login
 
 Send token in Authorization header
 
-Nothing sent in body!
-
-Receive if successfull:
+Receive if successful:
 
 ```json
 [
@@ -182,7 +213,7 @@ Send in body:
 }
 ```
 
-Receive if successfull: Status: 204 No Content
+Receive if successful: Status: 204 No Content
 
 ---
 
@@ -200,7 +231,9 @@ Send in body:
 }
 ```
 
-Receive if successfull: 201
+Receive if successful: 201
+
+&
 
 ```json
 {
@@ -225,18 +258,18 @@ Send in body:
 
 ```json
 {
-  "groupname": "Saferoutes.............",
+  "groupname": "Saferoutes",
   "passphrase": "thecoolestpassphrasever"
 }
 ```
 
-Receive if successfull: 201
+Receive if successful: 201
 
 ```json
 {
   "groupData": {
     "id": 17,
-    "name": "Saferoutes.............",
+    "name": "Saferoutes",
     "created_at": "2019-04-17T22:05:38.199Z"
   },
   "members": [
@@ -262,17 +295,17 @@ Send in body:
 
 ```json
 {
-  "name": "Saferoutes............."
+  "name": "Saferoutes"
 }
 ```
 
-Receive if successfull: 200
+Receive if successful: 200
 
 ```json
 {
   "groupData": {
     "id": 17,
-    "name": "Saferoutes.............",
+    "name": "Saferoutes",
     "created_at": "2019-04-17T22:05:38.199Z"
   },
   "members": [
